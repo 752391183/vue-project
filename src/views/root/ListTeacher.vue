@@ -64,7 +64,7 @@
           <el-input v-model="updateForm.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="工号" prop="number">
+        <el-form-item label="学工号" prop="number">
           <el-input v-model="updateForm.number"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">

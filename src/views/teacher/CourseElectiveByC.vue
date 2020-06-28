@@ -50,7 +50,7 @@
     <el-dialog
       title="提示"
       :visible.sync="centerDialogVisible"
-      width="30%"
+      width="35%"
       center
     >
       <el-form :model="updateForm" class="sumbit">

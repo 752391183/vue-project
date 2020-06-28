@@ -12,10 +12,10 @@
       <el-form-item label="密码" prop="password">
         <el-input v-model="submitForm.password"></el-input>
       </el-form-item>
-      <el-form-item label="需要选择学生数" prop="selectStudentNum">
+      <el-form-item label="需要选择的学生数量" prop="selectStudentNum">
         <el-input v-model="submitForm.selectStudentNum"></el-input>
       </el-form-item>
-      <el-form-item label="想要选择学生数" prop="wantStudentNum">
+      <el-form-item label="想要选择的学生数量" prop="wantStudentNum">
         <el-input v-model="submitForm.wantStudentNum"></el-input>
       </el-form-item>
       <el-button type="primary" @click="submit">

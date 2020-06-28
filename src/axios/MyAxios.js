@@ -15,7 +15,7 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-//响应拦截器
+//声明响应拦截器
 axios.interceptors.response.use(
   resp => {
     return resp;

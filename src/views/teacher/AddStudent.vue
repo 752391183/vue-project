@@ -16,7 +16,7 @@
     <el-table :data="students" style="width: 100%">
       <el-table-column label="编号" width="180">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.id }}</span>
+          <span style="margin-left: 9px">{{ scope.row.id }}</span>
         </template>
       </el-table-column>
       <el-table-column label="姓名" width="180">
