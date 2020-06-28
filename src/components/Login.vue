@@ -60,7 +60,7 @@ export default {
 </script>
 <style scoped>
 #btn {
-  width: 13rem;
+  width: 12rem;
   height: 3rem;
   bottom: 10px;
   /* top: 15px; */
