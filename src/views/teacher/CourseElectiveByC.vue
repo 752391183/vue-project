@@ -17,7 +17,7 @@
       <el-table-column label="学生名称" width="180">
         <template slot-scope="scope">
           <span style="margin-left: 10px">
-            {{ scope.row.student.user.name }}
+            {{ scope.row.student.name }}
           </span>
         </template>
       </el-table-column>

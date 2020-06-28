@@ -6,7 +6,8 @@
         <v-list-item-subtitle>{{ getUser.number }}</v-list-item-subtitle>
       </v-list-item-content>
       <v-divider></v-divider>
-      <template v-if="role == '6983f953b49c88210cb9'">
+      //老师
+      <template v-if="role == 'yqdhgqd'">
         <v-list-item to="/tselect">
           <v-list-item-icon>
             <v-icon>mdi-home</v-icon>

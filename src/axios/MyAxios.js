@@ -25,6 +25,7 @@ axios.interceptors.response.use(
     if (resp) {
       switch (resp.status) {
         case 401:
+          //可基于响应码，声明单独的处理
           break;
       }
       //此时为同步事件

@@ -105,7 +105,7 @@ export default {
       this.updateForm.wantStudentNum = row.wantStudentNum;
     },
     async handleDelete(index, row) {
-      let res = await this.$http.delete("/admin/teacher/" + row.id);
+      let res = await this.$http.delete("/root/teacher/" + row.id);
       console.log(res);
       if (res.data == true) {
         this.$message.success("删除成功");
@@ -113,7 +113,7 @@ export default {
       }
     },
     async update() {
-      let res = await this.$http.patch("/admin/teacher", this.updateForm);
+      let res = await this.$http.patch("/root/teacher", this.updateForm);
       if (res != null) {
         this.$message.success("修改成功");
         this.centerDialogVisible = false;
@@ -147,7 +147,7 @@ export default {
     };
   },
   async created() {
-    let res = await this.$http.get("/admin/teachers");
+    let res = await this.$http.get("/root/teachers");
     console.log(res);
     this.teachers = res.data.teachers;
     console.log(res.data.teachers);

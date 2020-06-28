@@ -1,110 +1,81 @@
 <template>
-  <div class="login_container">
-    <div class="login_box">
-      <h1 class="h">请登录</h1>
-      <el-form
-        ref="loginFormRef"
-        label-width="90px"
-        :model="user"
-        :rules="rules"
+  <v-container fluid id="con">
+    <myheader id="header" />
+    <v-divider dark="true"></v-divider>
+
+    <v-card id="card">
+      <v-img
+        class="white--text align-end"
+        height="200px"
+        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       >
-        <el-form-item label="身份" prop="radio">
-          <el-radio v-model="user.radio" label="1">学生</el-radio>
-          <el-radio v-model="user.radio" label="2">教师</el-radio>
-        </el-form-item>
-        <el-form-item label="学号/工号" prop="username">
-          <el-input v-model.number="user.username"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" v-if="user.radio == 2" prop="password">
-          <el-input v-model="user.password" type="password"></el-input>
-        </el-form-item>
-        <el-form-item class="btns">
-          <el-button type="primary" @click="login">登录</el-button>
-          <el-button type="info" @click="reset">重置</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-  </div>
+        <v-card-title>科技让生活更美好</v-card-title>
+      </v-img>
+      <v-card-text class="text--primary">
+        <v-form max-height="200" max-width="450" ref="form" id="myform">
+          <v-text-field label="账号" required v-model="number"></v-text-field>
+          <v-text-field
+            label="密码"
+            required
+            v-model="password"
+            type="password"
+          ></v-text-field>
+          <!-- <v-btn rounded color="primary" dark>Rounded Button</v-btn> -->
+          <v-btn
+            crounded
+            color="primary"
+            dark
+            id="btn"
+            type="button"
+            @click="login"
+          >
+            登陆
+          </v-btn>
+        </v-form>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 <script>
-import { LOGIN } from "@/store/type.js";
-import { mapState } from "vuex";
+import myheader from "@/components/layout/Header";
+import { LOGIN } from "@/store/types.js";
 export default {
-  data() {
-    return {
-      user: {
-        username: "",
-        password: "",
-        radio: "1"
-      },
-      rules: {
-        username: [
-          { required: true, message: "请输入学号/工号", trigger: "blur" },
-          { type: "number", message: "学号/工号必须为数字值", trigger: "blur" }
-        ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        radio: [{ required: true, message: "请选择身份", trigger: "change" }]
-      }
-    };
+  components: {
+    myheader
   },
-  computed: {
-    ...mapState(["isLogin"])
-  },
+  data: () => ({
+    number: null,
+    password: null
+  }),
   methods: {
-    reset() {
-      this.$refs.loginFormRef.resetFields();
-    },
     login() {
-      this.$refs.loginFormRef.validate(valid => {
-        if (!valid) return;
-        if (this.user.radio == 1) {
-          this.$store.dispatch(LOGIN, {
-            username: this.user.username
-          });
-        } else {
-          this.$store.dispatch(LOGIN, {
-            username: this.user.username,
-            password: this.user.password
-          });
-        }
+      this.$store.dispatch(LOGIN, {
+        number: this.number,
+        password: this.password
       });
-      setTimeout(() => {
-        if (this.isLogin == true) {
-          this.$message.success("登陆成功");
-          if (window.sessionStorage.getItem("role") == "zyxldln") {
-            this.$router.push("/student");
-          } else if (window.sessionStorage.getItem("role") == "yqdhgqd") {
-            this.$router.push("/teacher");
-          } else if (window.sessionStorage.getItem("role") == "xp") {
-            this.$router.push("/admin");
-          }
-        }
-      }, 500);
+      this.$refs.form.reset();
     }
   }
 };
 </script>
 <style scoped>
-.login_container {
-  background-color: #2b4b6b;
-  height: 100%;
+#btn {
+  width: 13rem;
+  height: 3rem;
+  bottom: 10px;
+  /* top: 15px; */
 }
-.login_box {
-  padding: 20px;
-  width: 450px;
-  height: 300px;
-  background-color: #fff;
-  border-radius: 3px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.btns {
-  display: flex;
-  justify-content: flex-end;
-}
-.h {
+#con {
   text-align: center;
+}
+#card {
+  max-width: 600px;
+  padding: 5rpx 20rpx;
+  margin: auto;
+  margin-top: 5%;
+}
+#myform {
+  margin: 10rpx;
+  width: 50rpx;
 }
 </style>

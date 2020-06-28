@@ -29,7 +29,7 @@
 export default {
   methods: {
     async submit() {
-      let res = await this.$http.post("/admin/teacher", this.submitForm);
+      let res = await this.$http.post("/root/teacher", this.submitForm);
       if (res != null) {
         this.$message.success("添加成功");
         this.centerDialogVisible = false;

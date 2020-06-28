@@ -70,7 +70,7 @@ export default {
       this.updateForm.wantStudentNum = row.wantStudentNum;
     },
     async handleDelete(index, row) {
-      let res = await this.$http.delete("/admin/teacher/" + row.id);
+      let res = await this.$http.delete("/root/teacher/" + row.id);
       console.log(res);
       if (res.data == true) {
         this.$message.success("删除成功");
